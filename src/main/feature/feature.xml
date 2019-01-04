@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="${project.artifactId}-${project.version}"
+        xmlns="http://karaf.apache.org/xmlns/features/v1.4.0">
+                
+        <repository>mvn:org.apache.karaf.features/framework/${karaf.version}/xml/features</repository>
+        <repository>mvn:org.apache.karaf.features/standard/${karaf.version}/xml/features</repository>
+        <repository>mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features</repository>
+        <repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf.version}/xml/features</repository>
+
+        <feature name="flairkit-devman-aws-rest" description='${project.name}' version='${project.version}'>
+                <capability>osgi.service;objectClass=com.flairbit.users.storage.api.UserStorageService</capability>
+                <capability>osgi.service;objectClass=com.flairbit.access.authentication.api.Authentication</capability>
+                <capability>osgi.service;objectClass=com.flairbit.access.authentication.api.AuthenticationRealm</capability>
+                <capability>osgi.service;objectClass=com.flairbit.access.authentication.api.ClientRegistry</capability>
+                <capability>osgi.service;objectClass=org.jasypt.encryption.pbe.StandardPBEStringEncryptor</capability>
+                <capability>osgi.service;objectClass=com.flairbit.access.oauth.storage.api.OAuthClientStorageService</capability>
+                <capability>osgi.service;objectClass=com.flairbit.access.oauth.storage.api.OAuthTokenStorageService</capability>
+                <capability>osgi.service;objectClass=org.jasypt.encryption.pbe.StandardPBEStringEncryptor</capability>
+                
+                <feature dependency="true">scr</feature>
+                <feature dependency="true">cxf</feature>
+                <feature dependency="true">cxf-rs-security-cors</feature>
+                <feature dependency="true">cxf-rs-security-oauth2</feature>
+                <feature dependency="true">aries-blueprint</feature>
+                <feature dependency="true">pax-jdbc-postgresql</feature>
+                <bundle>mvn:org.apache.xbean/xbean-asm6-shaded/4.10</bundle>
+
+                <feature dependency="true">openjpa</feature>
+                <feature>pax-jdbc-config</feature>
+                <feature>pax-jdbc</feature>
+                <feature>pax-jdbc-pool-dbcp2</feature>
+                <feature>jpa</feature>
+                <feature>transaction</feature>
+                <bundle>mvn:org.apache.commons/commons-lang3/${commons-lang3.version}</bundle>
+                <feature>jetty</feature>
+                <feature>war</feature>
+                <bundle dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/${jackson.version}</bundle>
+                <bundle dependency="true">mvn:com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/${jackson.version}</bundle>
+                <bundle dependency="true">mvn:org.apache.aries.blueprint/org.apache.aries.blueprint.api/${aries.blueprint.api.version}</bundle>
+                <feature>cxf</feature>
+                <feature>cxf-rs-security-oauth2</feature>
+                <feature>cxf-rs-security-cors</feature>
+                <bundle>mvn:org.apache.cxf/cxf-rt-rs-json-basic/${cxf.json.basic.version}</bundle>
+                <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-core/${jackson.version}</bundle>
+                <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson.version}</bundle>
+                <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-databind/${jackson.version}</bundle>
+                <bundle dependency="true">mvn:com.fasterxml.jackson.datatype/jackson-datatype-jsr310/${jackson.version}</bundle>
+        </feature>
+</features>
